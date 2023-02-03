@@ -476,9 +476,13 @@ function getMappedActionResolverName(
 }
 
 function mapDefaultActionName(actionName: DMMF.ModelAction, typeName: string) {
-  return actionName.includes("OrThrow")
-    ? `${actionName.replace("OrThrow", "")}${typeName}OrThrow`
-    : `${actionName}${typeName}`;
+  const customActionName = actionName.includes("One")
+    ? actionName.replace("One", "")
+    : actionName.toString();
+
+  return customActionName.includes("OrThrow")
+    ? `${customActionName.replace("OrThrow", "")}${typeName}OrThrow`
+    : `${customActionName}${typeName}`;
 }
 
 function getOperationKindName(actionName: string) {
